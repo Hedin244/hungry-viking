@@ -1,19 +1,31 @@
-import { Application, Sprite } from 'pixi.js'
+import { Renderer, } from 'pixi.js'
+import Game from './Game';
 
-const app = new Application({
-	view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
+const canvas = document.getElementById('pixi-canvas') as HTMLCanvasElement;
+let _width = window.innerWidth;
+let _height = window.innerHeight;
+
+declare global {
+	interface Window { renderer: Renderer; }
+}
+
+window.renderer = new Renderer({
+	view: canvas,
 	resolution: window.devicePixelRatio || 1,
 	autoDensity: true,
-	backgroundColor: 0x6495ed,
-	width: 640,
-	height: 480
+	width: _width,
+	height: _height
 });
 
-const clampy: Sprite = Sprite.from("clampy.png");
+addEventListener('load', handleLoadComplete);
+addEventListener('resize', resize);
+ function resize() {
+	 _width = window.innerWidth;
+	 _height = window.innerHeight;
 
-clampy.anchor.set(0.5);
+	 window.renderer.resize(_width, _height);
+ }
 
-clampy.x = app.screen.width / 2;
-clampy.y = app.screen.height / 2;
-
-app.stage.addChild(clampy);
+async function handleLoadComplete() {
+	await new Game().loadLevel();
+}

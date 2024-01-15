@@ -1,5 +1,7 @@
 {
-  "license": "",
+  "name": "hungry-viking",
+  "version": "0.1.0",
+  "author": "Karol Hinc",
   "scripts": {
     "start": "webpack serve --mode=development",
     "build": "run-s clean build-only",
@@ -7,7 +9,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "pixi.js": "^7.2.4"
+    "pixi.js": "^7.2.4",
+    "@pixi/sound": "^5.2.2"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
