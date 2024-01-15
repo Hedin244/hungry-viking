@@ -1,3 +1,9 @@
+To start:
+```
+npm install 
+npm start
+```
+
 Todo:
 * Game mechanics (like player speed) should change with game screen size to be similar  in difficulty.
 * Level is becoming too complicated, food logic, key handlers and background should probably go to their own classes.
